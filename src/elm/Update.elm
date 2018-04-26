@@ -18,6 +18,7 @@ update msg model =
     case msg of
       AlertMsg message -> { model | alert = Alert.update message model.alert } ! []
       CurrentTime time -> { model | currentTime = Just time } ! []
+      GetUsStateListDone response -> model ! []
       NewUrl url -> ( model, newUrl url )
       NoOp -> noOp
       UrlChange location -> (

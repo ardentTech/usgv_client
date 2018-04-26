@@ -22,6 +22,10 @@ incidentDecoder = decode Incident
   |> required "victims" int
 
 
+incidentListDecoder : Decoder ( List Incident )
+incidentListDecoder = list incidentDecoder
+
+
 -- PRIVATE
 
 

@@ -1,4 +1,4 @@
-module Crime.Decode exposing (..)
+module Decode.Incident exposing (..)
 
 import Date exposing (Date)
 import Date.Extra exposing (fromIsoString)

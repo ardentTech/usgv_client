@@ -5,6 +5,7 @@ import UrlParser exposing (parsePath)
 
 import Alert
 import Command
+import Command.Incident exposing (getIncidentList)
 import Message exposing (Msg(..))
 import Model exposing (Model) 
 import Model.UsState
@@ -19,6 +20,10 @@ update msg model =
     case msg of
       AlertMsg message -> { model | alert = Alert.update message model.alert } ! []
       CurrentTime time -> { model | currentTime = Just time } ! []
+      GetIncidentListDone response ->
+        case response of
+          Ok r -> { model | incidentList = r } ! []
+          Err e -> model ! []
       GetUsStateListDone response ->
         case response of
           Ok r -> { model | usStateList = r } ! []
@@ -26,6 +31,15 @@ update msg model =
       NewUrl url -> ( model, newUrl url )
       NoOp -> noOp
       SelectUsState fips ->
-        { model | selectedUsState = Model.UsState.findByFips model.usStateList fips } ! []
+        let
+          model_ = { model | selectedUsState = Model.UsState.findByFips model.usStateList fips }
+        in
+          model_ ! [ getIncidentList model_ ]
+      SelectIncidentYear year ->
+        let
+          model_ = { model | selectedIncidentYear = year }
+        in
+          model_ ! [ getIncidentList model_ ]
+      SetIncidentTableState state -> { model | incidentTableState = state } ! []
       UrlChange location -> (
         { model | currentRoute = parsePath route location }, Command.forMsg msg )

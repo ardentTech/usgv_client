@@ -6,6 +6,8 @@ import Html.Attributes exposing (class)
 import Message exposing (Msg(..))
 import Model exposing (Model)
 import Router exposing (Route(..))
+import View.IncidentYearDropdown
+import View.IncidentTable
 import View.UsStateDropdown
 
 
@@ -29,8 +31,10 @@ forRoute route =
 
 indexView : Model -> Html Msg
 indexView model =
-  div [] [
-    View.UsStateDropdown.view model
+  div [ class "row mt-3" ] [
+    View.IncidentYearDropdown.view model,
+    View.UsStateDropdown.view model,
+    View.IncidentTable.view model
   ]
 
 

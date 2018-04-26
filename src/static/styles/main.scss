@@ -1,6 +1,35 @@
-//$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
-//@import '~bootstrap-sass/assets/stylesheets/bootstrap/_mixins.scss';
-//@import '~bootstrap-sass/assets/stylesheets/_bootstrap.scss';
-
-// can add Boostrap overrides, additional Sass/CSS below...
 @import 'bootstrap.min.css';
+
+html {
+    overflow: -moz-scrollbars-vertical;
+    overflow-y: scroll;
+}
+
+body,
+.form-control { font-size: 0.8rem; }
+
+#footer p {
+    font-size: 0.7rem;
+    margin-bottom: 0.4rem;
+}
+
+ text { fill: #212529; }
+
+ .navbar { padding: 0 1rem; }
+
+ g.x.axis .domain,
+ g.x.axis .tick line { display: none; }
+
+ #state-borders {
+     fill: none;
+     pointer-events: none;
+     stroke: #fff;
+     stroke-linejoin: round;
+     stroke-linecap: round;
+     stroke-width: 0.5px;
+ }
+
+ #indicator {
+     stroke: #08306b;
+     stroke-width: 1px;
+ }

@@ -7,6 +7,7 @@ import Alert
 import Command
 import Message exposing (Msg(..))
 import Model exposing (Model) 
+import Model.UsState
 import Router exposing (route)
 
 
@@ -24,5 +25,7 @@ update msg model =
           Err e -> model ! []
       NewUrl url -> ( model, newUrl url )
       NoOp -> noOp
+      SelectUsState fips ->
+        { model | selectedUsState = Model.UsState.findByFips model.usStateList fips } ! []
       UrlChange location -> (
         { model | currentRoute = parsePath route location }, Command.forMsg msg )

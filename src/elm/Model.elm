@@ -15,6 +15,7 @@ type alias Model = {
   currentRoute : Maybe Route,
   currentTime : Maybe Time.Time,
   docRoot : String,
+  selectedUsState : Maybe UsState,
   usStateList : List UsState
 }
 
@@ -25,4 +26,5 @@ init flags location = {
   currentRoute = parsePath route location,
   currentTime = Nothing,
   docRoot = flags.docRoot,
+  selectedUsState = Nothing,
   usStateList = []}

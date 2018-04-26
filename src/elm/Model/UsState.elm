@@ -1,4 +1,4 @@
-module Model.UsState exposing (UsState)
+module Model.UsState exposing (..)
 
 
 type alias UsState = {

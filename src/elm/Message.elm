@@ -15,4 +15,5 @@ type Msg =
   GetUsStateListDone ( Result Error ( List UsState )) |
   NewUrl String |
   NoOp |
+  SelectUsState String |
   UrlChange Location

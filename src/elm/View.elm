@@ -6,6 +6,7 @@ import Html.Attributes exposing (class)
 import Message exposing (Msg(..))
 import Model exposing (Model)
 import Router exposing (Route(..))
+import View.UsStateDropdown
 
 
 view : Model -> Html Msg
@@ -29,7 +30,7 @@ forRoute route =
 indexView : Model -> Html Msg
 indexView model =
   div [] [
-    text <| toString model.usStateList
+    View.UsStateDropdown.view model
   ]
 
 

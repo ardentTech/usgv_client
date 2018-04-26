@@ -27,7 +27,10 @@ forRoute route =
 
 
 indexView : Model -> Html Msg
-indexView model = div [] [ h3 [] [ text "Index" ] ]
+indexView model =
+  div [] [
+    text <| toString model.usStateList
+  ]
 
 
 notFoundView : Model -> Html Msg

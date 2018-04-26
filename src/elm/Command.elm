@@ -1,4 +1,4 @@
-module Command exposing (forMsg)
+module Command exposing (forMsg, init)
 
 import Task
 import Time

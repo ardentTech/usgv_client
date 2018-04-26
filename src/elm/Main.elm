@@ -2,6 +2,7 @@ module Main exposing (main)
 
 import Navigation exposing (Location, programWithFlags)
 
+import Command
 import Flag exposing (Flags)
 import Message exposing (Msg(..))
 import Model exposing (Model)
@@ -10,7 +11,11 @@ import View exposing (view)
 
 
 init : Flags -> Location -> ( Model, Cmd Msg )
-init flags location = (Model.init flags location, Cmd.none)
+init flags location = 
+  let
+    model = Model.init flags location
+  in
+    ( model, Command.init model )
 
 
 main : Program Flags Model Msg

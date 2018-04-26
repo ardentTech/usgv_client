@@ -18,6 +18,7 @@ type Msg =
   GetUsStateListDone ( Result Error ( List UsState )) |
   NewUrl String |
   NoOp |
+  SelectCategory String |
   SelectIncidentYear Int |
   SelectUsState String |
   SetIncidentTableState Table.State |

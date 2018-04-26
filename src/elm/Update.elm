@@ -8,6 +8,7 @@ import Command
 import Command.Incident exposing (getIncidentList)
 import Message exposing (Msg(..))
 import Model exposing (Model) 
+import Model.Category exposing (Category(..))
 import Model.UsState
 import Router exposing (route)
 
@@ -30,6 +31,16 @@ update msg model =
           Err e -> model ! []
       NewUrl url -> ( model, newUrl url )
       NoOp -> noOp
+      SelectCategory category ->
+        let
+          category_ = case category of
+            "Incidents" -> Incidents
+            "Injured" -> Injured
+            "Killed" -> Killed
+            "Victims" -> Victims
+            _ -> Incidents
+        in
+          { model | selectedCategory = category_ } ! []
       SelectUsState fips ->
         let
           model_ = { model | selectedUsState = Model.UsState.findByFips model.usStateList fips }

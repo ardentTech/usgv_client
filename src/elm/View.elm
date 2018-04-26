@@ -6,8 +6,9 @@ import Html.Attributes exposing (class)
 import Message exposing (Msg(..))
 import Model exposing (Model)
 import Router exposing (Route(..))
-import View.IncidentYearDropdown
+import View.CategoryDropdown
 import View.IncidentTable
+import View.IncidentYearDropdown
 import View.UsStateDropdown
 
 
@@ -34,6 +35,7 @@ indexView model =
   div [ class "row mt-3" ] [
     View.IncidentYearDropdown.view model,
     View.UsStateDropdown.view model,
+    View.CategoryDropdown.view model,
     View.IncidentTable.view model
   ]
 

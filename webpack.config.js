@@ -53,7 +53,7 @@ var commonConfig = {
             inject: 'body',
             filename: 'index.html'
         }),
-        new webpack.EnvironmentPlugin(["API_URL"]),
+        new webpack.EnvironmentPlugin(["DOC_ROOT"]),
     ]
 }
 

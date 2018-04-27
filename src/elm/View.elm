@@ -37,7 +37,7 @@ indexView model =
     View.IncidentYearDropdown.view model,
     View.UsStateDropdown.view model,
     View.CategoryDropdown.view model,
-    div [ id "vis" ] [ svg [] []],
+    div [ class "col-12", id "vis" ] [ svg [] []],
     View.IncidentTable.view model
   ]
 

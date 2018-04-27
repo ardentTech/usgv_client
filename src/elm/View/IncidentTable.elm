@@ -13,7 +13,7 @@ import Model.UsState exposing (findById)
 
 view : Model -> Html Msg
 view model =
-  div [ class "col" ] [
+  div [ class "col-12" ] [
     Table.view ( tableConfig model ) model.incidentTableState model.incidentList
   ]
 

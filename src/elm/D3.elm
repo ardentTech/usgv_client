@@ -1,5 +1,7 @@
 port module D3 exposing (usStateSelected, usStateListReady)
 
+import Json.Encode
+
 import Model.UsState exposing (UsState)
 
 
@@ -17,3 +19,5 @@ usStateSelected state =
 port stateSelected : Maybe String -> Cmd msg
 
 port statesReady : List UsState -> Cmd msg
+
+port stateStatsUpdated : Json.Encode.Value -> Cmd msg

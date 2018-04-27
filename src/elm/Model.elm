@@ -9,6 +9,7 @@ import Alert exposing (Alert)
 import Flag exposing (Flags)
 import Model.Category exposing (Category(..))
 import Model.Incident exposing (Incident)
+import Model.Stats exposing (Stats)
 import Model.UsState exposing (UsState)
 import Router exposing (Route, route)
 
@@ -23,6 +24,7 @@ type alias Model = {
   selectedCategory : Category,
   selectedIncidentYear : Int,
   selectedUsState : Maybe UsState,
+  statsList : List Stats,
   usStateList : List UsState
 }
 
@@ -38,4 +40,5 @@ init flags location = {
   selectedCategory = Incidents,
   selectedIncidentYear = 2018,
   selectedUsState = Nothing,
+  statsList = [],
   usStateList = []}

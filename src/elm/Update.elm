@@ -26,6 +26,14 @@ update msg model =
         case response of
           Ok r -> { model | incidentList = r } ! []
           Err e -> model ! []
+      GetStatsListDone response ->
+        case response of
+          Ok r ->
+            let
+              model_ = { model | statsList = r }
+            in
+              model_ ! [ D3.updateStats model_ ]
+          Err e -> model ! []
       GetUsStateListDone response ->
         case response of
           Ok r -> { model | usStateList = r } ! [ D3.usStateListReady r ]
@@ -41,7 +49,7 @@ update msg model =
             "Victims" -> Victims
             _ -> Incidents
         in
-          { model | selectedCategory = category_ } ! []
+          { model | selectedCategory = category_ } ! [ D3.updateStats model ]
       SelectUsState fips ->
         let
           state = Model.UsState.findByFips model.usStateList fips
@@ -52,7 +60,15 @@ update msg model =
         let
           model_ = { model | selectedIncidentYear = year }
         in
-          model_ ! [ getIncidentList model_ ]
+          model_ ! [ getIncidentList model_, D3.updateStats model_ ]
       SetIncidentTableState state -> { model | incidentTableState = state } ! []
       UrlChange location -> (
         { model | currentRoute = parsePath route location }, Command.forMsg msg )
+      UsStateClicked fips ->
+        let
+          model_ = case fips of
+            Just fips_ -> {
+              model | selectedUsState = Model.UsState.findByFips model.usStateList fips_ }
+            _ -> { model | selectedUsState = Nothing }
+        in
+          model_ ! [ getIncidentList model_ ]

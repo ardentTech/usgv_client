@@ -153,20 +153,20 @@ export class UsMap {
     }
 
     // @todo this gets `fips` while onStatesReady gets `fips_code`
-    update(stats) {
+    update(data) {
         if (this.rendered) {
-            let max = d3.max(stats.results, (d) => d.value);
+            let max = d3.max(data.stats, (d) => d.value);
             this.color.domain([0, max]);
             this.legend.update(this.color);
-            this.updateStates(stats);
+            this.updateStates(data);
         } else {
-            setTimeout(() => this.update(stats), 25);
+            setTimeout(() => this.update(data), 25);
         }
     }
 
     updateStates(data) {
         for (let [k, v] of Object.entries(this.statesData)) {
-            let item = data.results.filter((d) => d.fips == k)[0];
+            let item = data.stats.filter((d) => d.fips == k)[0];
             this.statesData[k].value = typeof item === "undefined" ? 0 : item.value;
         }
 

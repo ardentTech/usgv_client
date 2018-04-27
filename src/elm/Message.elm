@@ -8,6 +8,7 @@ import Time
 
 import Alert
 import Model.Incident exposing (Incident)
+import Model.Stats exposing (Stats)
 import Model.UsState exposing (UsState)
 
 
@@ -15,6 +16,7 @@ type Msg =
   AlertMsg Alert.Msg |
   CurrentTime Time.Time |
   GetIncidentListDone ( Result Error ( List Incident )) |
+  GetStatsListDone ( Result Error ( List Stats )) |
   GetUsStateListDone ( Result Error ( List UsState )) |
   NewUrl String |
   NoOp |
@@ -22,4 +24,5 @@ type Msg =
   SelectIncidentYear Int |
   SelectUsState String |
   SetIncidentTableState Table.State |
-  UrlChange Location
+  UrlChange Location |
+  UsStateClicked ( Maybe String )

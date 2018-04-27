@@ -4,6 +4,7 @@ import Task
 import Time
 
 import Command.Incident exposing (getIncidentList)
+import Command.Stats exposing (getStatsList)
 import Command.UsState exposing (getUsStateList)
 import Message exposing (Msg(..))
 import Model exposing (Model)
@@ -22,4 +23,9 @@ getCurrentTime = Task.perform CurrentTime Time.now
 
 init : Model -> Cmd Msg
 init model =
-  Cmd.batch [ getCurrentTime, getIncidentList model, getUsStateList model ]
+  Cmd.batch [
+    getCurrentTime,
+    getIncidentList model,
+    getStatsList model,
+    getUsStateList model
+  ]

@@ -6,6 +6,7 @@ import Command
 import Flag exposing (Flags)
 import Message exposing (Msg(..))
 import Model exposing (Model)
+import Subscription exposing (subscriptions)
 import Update exposing (update)
 import View exposing (view)
 
@@ -21,7 +22,7 @@ init flags location =
 main : Program Flags Model Msg
 main = programWithFlags UrlChange {
     init = init,
-    subscriptions = always Sub.none,
+    subscriptions = subscriptions,
     update = update,
     view = view
   }

@@ -10,9 +10,8 @@ class App {
     constructor() {
         // @todo should only load on "/" URI path
         this.usMap = new UsMap("vis");
-        console.log(this.upMap);
 
-        ElmApp.receive("stateStatsUpdated", (data) => this.usMap.update(data));
+        ElmApp.receive("statsUpdated", (data) => this.usMap.update(data));
         ElmApp.receive("stateSelected", (data) => this.usMap.onStateSelect(data));
         ElmApp.receive("statesReady", (data) => this.usMap.onStatesReady(data));
     }

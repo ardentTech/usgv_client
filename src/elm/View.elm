@@ -1,11 +1,12 @@
 module View exposing (view)
 
 import Html exposing (Html, div, h3, text)
-import Html.Attributes exposing (class)
+import Html.Attributes exposing (class, id)
 
 import Message exposing (Msg(..))
 import Model exposing (Model)
 import Router exposing (Route(..))
+import Svg exposing (svg)
 import View.CategoryDropdown
 import View.IncidentTable
 import View.IncidentYearDropdown
@@ -36,6 +37,7 @@ indexView model =
     View.IncidentYearDropdown.view model,
     View.UsStateDropdown.view model,
     View.CategoryDropdown.view model,
+    div [ id "vis" ] [ svg [] []],
     View.IncidentTable.view model
   ]
 

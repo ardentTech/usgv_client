@@ -6,6 +6,7 @@ import UrlParser exposing (parsePath)
 import Alert
 import Command
 import Command.Incident exposing (getIncidentList)
+import D3
 import Message exposing (Msg(..))
 import Model exposing (Model) 
 import Model.Category exposing (Category(..))
@@ -27,7 +28,7 @@ update msg model =
           Err e -> model ! []
       GetUsStateListDone response ->
         case response of
-          Ok r -> { model | usStateList = r } ! []
+          Ok r -> { model | usStateList = r } ! [ D3.usStateListReady r ]
           Err e -> model ! []
       NewUrl url -> ( model, newUrl url )
       NoOp -> noOp
@@ -43,9 +44,10 @@ update msg model =
           { model | selectedCategory = category_ } ! []
       SelectUsState fips ->
         let
-          model_ = { model | selectedUsState = Model.UsState.findByFips model.usStateList fips }
+          state = Model.UsState.findByFips model.usStateList fips
+          model_ = { model | selectedUsState = state }
         in
-          model_ ! [ getIncidentList model_ ]
+          model_ ! [ getIncidentList model_, D3.usStateSelected state ]
       SelectIncidentYear year ->
         let
           model_ = { model | selectedIncidentYear = year }

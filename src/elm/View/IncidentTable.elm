@@ -43,7 +43,7 @@ tableConfig model =
 
 viewDetails : Incident -> Table.HtmlDetails Msg
 viewDetails { url } =
-  Table.HtmlDetails [] [ a [ href url, target "_blank" ] [ text "More Info" ]]
+  Table.HtmlDetails [] [ a [ href url, target "_blank" ] [ text "More" ]]
 
 
 detailsColumn : Table.Column Incident Msg

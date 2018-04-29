@@ -1,6 +1,6 @@
 module View exposing (view)
 
-import Html exposing (Html, div, h3, text)
+import Html exposing (Html, div, h4, text)
 import Html.Attributes exposing (class, id)
 
 import Message exposing (Msg(..))
@@ -18,7 +18,14 @@ view model =
   let
     childView = forRoute model.currentRoute <| model
   in
-    div [ class "container" ] [ childView ]
+    div [ class "container" ] [
+      div [ class "row mb-3 mt-3" ] [
+        div [ class "col-12" ] [
+          h4 [ class "text-center" ] [ text "US Mass Shootings (2014-2018)" ]
+        ]
+      ],
+      childView
+    ]
 
 
 -- PRIVATE
@@ -33,7 +40,7 @@ forRoute route =
 
 indexView : Model -> Html Msg
 indexView model =
-  div [ class "row mt-3" ] [
+  div [ class "row" ] [
     View.IncidentYearDropdown.view model,
     View.UsStateDropdown.view model,
     View.CategoryDropdown.view model,
@@ -43,4 +50,4 @@ indexView model =
 
 
 notFoundView : Model -> Html Msg
-notFoundView model = div [] [ h3 [] [ text "404" ] ]
+notFoundView model = div [ class "row" ] [ h4 [] [ text "404" ] ]

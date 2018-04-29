@@ -25,7 +25,5 @@ init : Model -> Cmd Msg
 init model =
   Cmd.batch [
     getCurrentTime,
-    getIncidentList model,
-    getStatsList model,
     getUsStateList model
   ]

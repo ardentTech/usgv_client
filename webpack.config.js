@@ -119,6 +119,12 @@ if (isProd === true) {
                 from: '.htaccess'
             }, {
                 from: 'src/favicon.ico'
+            }, {
+                from: 'src/static/js/',
+                to: 'static/js/'
+            }, {
+                from: 'src/static/data/',
+                to: 'static/data/'
             }])
 
             // extract CSS into a separate file

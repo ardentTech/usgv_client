@@ -8,11 +8,6 @@ html {
 body,
 .form-control { font-size: 0.8rem; }
 
-#footer p {
-    font-size: 0.7rem;
-    margin-bottom: 0.4rem;
-}
-
  text { fill: #212529; }
 
  .navbar { padding: 0 1rem; }
@@ -33,3 +28,6 @@ body,
      stroke: #08306b;
      stroke-width: 1px;
  }
+
+ #footer a { color: #868e96; }
+ #footer a:hover { color: #0056b3; }

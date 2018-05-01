@@ -1,7 +1,7 @@
 module View exposing (view)
 
-import Html exposing (Html, div, h4, text)
-import Html.Attributes exposing (class, id)
+import Html exposing (Html, a, div, h4, small, text)
+import Html.Attributes exposing (class, href, id)
 
 import Message exposing (Msg(..))
 import Model exposing (Model)
@@ -24,7 +24,14 @@ view model =
           h4 [ class "text-center" ] [ text "US Mass Shootings (2014-2018)" ]
         ]
       ],
-      childView
+      childView,
+      div [ class "row pb-4", id "footer" ] [
+        div [ class "col-12 text-center text-muted" ] [
+          a [ href "https://github.com/ardentTech/usgv_client" ] [ text "code by Ardent Technicreative" ],
+          text " // ",
+          a [ href "http://www.gunviolencearchive.org" ] [ text "data by Gun Violence Archive" ]
+        ]
+      ]
     ]
 
 

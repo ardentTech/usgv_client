@@ -8,26 +8,33 @@ html {
 body,
 .form-control { font-size: 0.8rem; }
 
- text { fill: #212529; }
+text { fill: #212529; }
 
- .navbar { padding: 0 1rem; }
+.navbar { padding: 0 1rem; }
 
- g.x.axis .domain,
- g.x.axis .tick line { display: none; }
+g.x.axis .domain,
+g.x.axis .tick line { display: none; }
 
- #state-borders {
-     fill: none;
-     pointer-events: none;
-     stroke: #fff;
-     stroke-linejoin: round;
-     stroke-linecap: round;
-     stroke-width: 0.5px;
- }
+#state-borders {
+    fill: none;
+    pointer-events: none;
+    stroke: #fff;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke-width: 0.5px;
+}
 
- #indicator {
-     stroke: #08306b;
-     stroke-width: 1px;
- }
+#indicator {
+    stroke: #08306b;
+    stroke-width: 1px;
+}
 
- #footer a { color: #868e96; }
- #footer a:hover { color: #0056b3; }
+#footer a { color: #868e96; }
+#footer a:hover { color: #0056b3; }
+
+.table thead th {
+    background: white;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0px;
+}

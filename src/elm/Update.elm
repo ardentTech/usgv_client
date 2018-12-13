@@ -6,7 +6,7 @@ import UrlParser exposing (parsePath)
 import Alert
 import Command
 import Command.Incident exposing (getIncidentList)
-import Command.Stats exposing (getStatsList)
+import Command.StateStats exposing (getStateStatsList)
 import D3
 import Message exposing (Msg(..))
 import Model exposing (Model) 
@@ -27,11 +27,11 @@ update msg model =
         case response of
           Ok r -> { model | incidentList = r } ! []
           Err e -> model ! []
-      GetStatsListDone response ->
+      GetStateStatsListDone response ->
         case response of
           Ok r ->
             let
-              model_ = { model | statsList = r }
+              model_ = { model | stateStatsList = r }
             in
               model_ ! [ D3.updateStats model_ ]
           Err e -> model ! []
@@ -43,7 +43,7 @@ update msg model =
             in
               model_ ! [
                 getIncidentList model_,
-                getStatsList model_,
+                getStateStatsList model_,
                 D3.usStateListReady r
               ]
           Err e -> model ! []

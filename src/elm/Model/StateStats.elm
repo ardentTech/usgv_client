@@ -1,7 +1,7 @@
-module Model.Stats exposing (Stats, forYear)
+module Model.StateStats exposing (StateStats, forYear)
 
 
-type alias Stats = {
+type alias StateStats = {
   incidents : Int,
   injured : Int,
   killed : Int,
@@ -11,6 +11,6 @@ type alias Stats = {
 }
 
 
-forYear : List Stats -> Int -> List Stats
+forYear : List StateStats -> Int -> List StateStats
 forYear stats year =
   List.filter ( \s -> s.year == year ) stats

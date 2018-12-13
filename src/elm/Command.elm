@@ -3,8 +3,6 @@ module Command exposing (forMsg, init)
 import Task
 import Time
 
-import Command.Incident exposing (getIncidentList)
-import Command.Stats exposing (getStatsList)
 import Command.UsState exposing (getUsStateList)
 import Message exposing (Msg(..))
 import Model exposing (Model)

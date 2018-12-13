@@ -4,7 +4,7 @@ import Json.Encode exposing (encode, int, list, object, string)
 
 import Model exposing (Model)
 import Model.Category exposing (Category(..))
-import Model.Stats exposing (Stats)
+import Model.StateStats exposing (StateStats)
 import Model.UsState exposing (UsState)
 
 
@@ -13,7 +13,7 @@ updateStats model =
   statsUpdated <| object [
     ( "metric", string <| toString <| model.selectedCategory ),
     ( "stats", list <| List.map (\s -> encodeState model s) <|
-      Model.Stats.forYear model.statsList model.selectedIncidentYear )]
+      Model.StateStats.forYear model.stateStatsList model.selectedIncidentYear )]
 
 
 usStateListReady : List UsState -> Cmd msg
@@ -34,7 +34,7 @@ port statesReady : List UsState -> Cmd msg
 
 port statsUpdated : Json.Encode.Value -> Cmd msg
 
-encodeState : Model ->  Stats -> Json.Encode.Value
+encodeState : Model ->  StateStats -> Json.Encode.Value
 encodeState model stats =
   let
     fips = string <| case Model.UsState.findById model.usStateList stats.state of

@@ -1,13 +1,13 @@
-module Decode.Stats exposing (..)
+module Decode.StateStats exposing (..)
 
 import Json.Decode exposing (Decoder, int, list, string)
 import Json.Decode.Pipeline exposing (decode, required)
 
-import Model.Stats exposing (Stats)
+import Model.StateStats exposing (StateStats)
 
 
-statsDecoder : Decoder Stats
-statsDecoder = decode Stats
+stateStatsDecoder : Decoder StateStats
+stateStatsDecoder = decode StateStats
   |> required "incidents" int
   |> required "injured" int
   |> required "killed" int
@@ -16,5 +16,5 @@ statsDecoder = decode Stats
   |> required "year" int
 
 
-statsListDecoder : Decoder ( List Stats )
-statsListDecoder = list statsDecoder
+stateStatsListDecoder : Decoder ( List StateStats )
+stateStatsListDecoder = list stateStatsDecoder

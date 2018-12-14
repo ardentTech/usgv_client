@@ -11,6 +11,7 @@ import D3
 import Message exposing (Msg(..))
 import Model exposing (Model) 
 import Model.Category exposing (Category(..))
+import Model.Stats
 import Model.UsState
 import Router exposing (route)
 
@@ -25,7 +26,12 @@ update msg model =
       CurrentTime time -> { model | currentTime = Just time } ! []
       GetIncidentListDone response ->
         case response of
-          Ok r -> { model | incidentList = r } ! []
+          Ok r ->
+            let
+              incidents = r
+              stats = Model.Stats.calculate incidents
+            in
+              { model | incidentList = incidents, stats = stats } ! []
           Err e -> model ! []
       GetStateStatsListDone response ->
         case response of

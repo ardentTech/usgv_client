@@ -10,6 +10,7 @@ import Svg exposing (svg)
 import View.CategoryDropdown
 import View.IncidentTable
 import View.IncidentYearDropdown
+import View.Stats
 import View.UsStateDropdown
 
 
@@ -52,6 +53,7 @@ indexView model =
     View.UsStateDropdown.view model,
     View.CategoryDropdown.view model,
     div [ class "col-12", id "vis" ] [ svg [] []],
+    View.Stats.view model,
     View.IncidentTable.view model
   ]
 

@@ -14,7 +14,7 @@ view { selectedIncidentYear } =
   let
     toOption v = option [
       selected <| if v == selectedIncidentYear then True else False, value <| toString v ] [ text <| toString v ]
-    options = List.map toOption [2018, 2017, 2016, 2015, 2014]
+    options = List.map toOption [2019, 2018, 2017, 2016, 2015, 2014]
   in
     div [ class "col-md-4 mb-3" ] [
       select [ 

@@ -22,7 +22,7 @@ view model =
     div [ class "container" ] [
       div [ class "row mb-3 mt-3" ] [
         div [ class "col-12" ] [
-          h4 [ class "text-center" ] [ text "US Mass Shootings (2014-2018)" ]
+          h4 [ class "text-center" ] [ text "US Mass Shootings (2014-2019)" ]
         ]
       ],
       childView,
